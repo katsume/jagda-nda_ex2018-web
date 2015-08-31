@@ -1,5 +1,4 @@
 var gulp= require('gulp'),
-	gulpIf= require('gulp-if'),
 	sass= require('gulp-ruby-sass'),
 	config= require('../config').sass;
 
