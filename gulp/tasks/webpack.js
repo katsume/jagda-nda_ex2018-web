@@ -8,6 +8,5 @@ gulp.task('webpack', function(){
 	return gulp.src(config.entry)
 		.pipe(named())
 		.pipe(webpack(config.webpack))
-		.pipe(gulpIf(config.uglify, uglify()))
 		.pipe(gulp.dest(config.dest));
 });
