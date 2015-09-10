@@ -1,7 +1,6 @@
 var gulp= require('gulp'),
 	named= require('vinyl-named'),
 	webpack= require('webpack-stream'),
-	uglify= require('gulp-uglify'),
 	config= require('../config').webpack
 
 gulp.task('webpack', function(){

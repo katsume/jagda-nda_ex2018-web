@@ -11,10 +11,16 @@ module.exports= {
 		webpack: {
 			module: {
 				loaders: [
+					{
+						test: /\.js?$/,
+						exclude: /(node_modules|bower_components)/,
+						loader: 'babel',
+						query: {
+						}
+					}
 				]
 			}
 		},
-		uglify: false,
 		dest: dest+'/js'
 	},
 	copy: {
