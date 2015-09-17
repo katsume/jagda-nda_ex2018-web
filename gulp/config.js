@@ -1,3 +1,6 @@
+var path= require('path'),
+	webpack= require('webpack');
+
 var src= './src',
 	dest= './build';
 
@@ -19,7 +22,15 @@ module.exports= {
 						}
 					}
 				]
-			}
+			},
+			resolve: {
+				root: [path.join(__dirname, "../bower_components")]
+			},
+			plugins: [
+				new webpack.ResolverPlugin(
+					new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+				)
+			]
 		},
 		dest: dest+'/js'
 	},
