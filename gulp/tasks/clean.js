@@ -2,6 +2,8 @@ var gulp= require('gulp'),
 	del= require('del'),
 	config= require('../config');
 
-gulp.task('clean', function(callback){
-	del([config.dest], callback);
+gulp.task('clean', (callback)=>{
+	del([config.dest]).then(()=>{
+		callback();
+	});
 });
