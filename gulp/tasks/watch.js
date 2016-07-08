@@ -17,7 +17,7 @@ gulp.task('watch', function(){
 		return runSequence('webpack', browserSync.reload);
 	});
 
-	watch(path.relative('.', config.sass.src+'**/*.scss'), function(){
+	watch(path.relative('.', config.sass.src), function(){
 		return runSequence('sass', browserSync.reload);
 	});
 

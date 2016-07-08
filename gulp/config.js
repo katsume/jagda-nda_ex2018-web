@@ -39,7 +39,7 @@ module.exports= {
 		dest: dest
 	},
 	sass: {
-		src: src+'/sass/',
+		src: src+'/sass/**/*.scss',
 		sass: {
 			style: 'expanded'
 		},
