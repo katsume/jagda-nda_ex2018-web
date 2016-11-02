@@ -16,20 +16,17 @@ module.exports= {
 				loaders: [
 					{
 						test: /\.js?$/,
-						exclude: /(node_modules|bower_components)/,
+						exclude: /(node_modules)/,
 						loader: 'babel',
 						query: {
+							presets: ['es2015']
 						}
 					}
 				]
 			},
 			resolve: {
-				root: [path.join(__dirname, "../bower_components")]
 			},
 			plugins: [
-				new webpack.ResolverPlugin(
-					new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
-				)
 			]
 		},
 		dest: dest+'/js'
