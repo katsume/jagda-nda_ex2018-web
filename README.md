@@ -1,4 +1,4 @@
-# html-skelton
+# PROJECT_NAME
 
 ## Install
 
