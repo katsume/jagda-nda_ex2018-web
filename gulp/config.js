@@ -6,17 +6,27 @@ var src= './src',
 
 module.exports= {
 	dest: dest,
+	ejs: {
+		watch: src+'/ejs/**/*.ejs',
+		src: [src+'/ejs/**/*.ejs', '!'+src+'/ejs/**/_*.ejs'],
+		options: {
+		},
+		settings: {
+			ext: ".html"
+		},
+		dest: dest
+	},
 	webpack: {
 		src: src+'/js/**',
 		entry: [
-			src+'/js/index.js'
+			src+'/js/script.js'
 		],
 		webpack: {
 			module: {
 				loaders: [
 					{
 						test: /\.js?$/,
-						exclude: /(node_modules)/,
+						exclude: /(node_modules|bower_components)/,
 						loader: 'babel',
 						query: {
 							presets: ['es2015']
@@ -25,8 +35,12 @@ module.exports= {
 				]
 			},
 			resolve: {
+				root: [path.join(__dirname, "../bower_components")]
 			},
 			plugins: [
+				new webpack.ResolverPlugin(
+					new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+				)
 			]
 		},
 		dest: dest+'/js'

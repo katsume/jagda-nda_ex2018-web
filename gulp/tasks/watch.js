@@ -13,6 +13,10 @@ gulp.task('watch', function(){
 		}
 	});
 
+	watch(path.relative('.', config.ejs.watch), function(){
+		return runSequence('ejs', browserSync.reload);
+	});
+	
 	watch(path.relative('.', config.webpack.src), function(){
 		return runSequence('webpack', browserSync.reload);
 	});
