@@ -1,2 +1,6 @@
-document.addEventListener('DOMContentLoaded', ()=>{
-});
+class Index {
+    constructor(){
+    }
+}
+
+module.exports= Index;
