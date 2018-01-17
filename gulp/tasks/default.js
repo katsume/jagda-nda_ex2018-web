@@ -1,6 +1,6 @@
-var gulp= require('gulp'),
-	runSequence= require('run-sequence');
+const	gulp= require('gulp'),
+		runSequence= require('run-sequence');
 
-gulp.task('default', function(callback){
+gulp.task('default', (callback)=>{
 	return runSequence('build', 'watch', callback);
 });

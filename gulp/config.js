@@ -1,25 +1,15 @@
-var path= require('path'),
-	webpack= require('webpack');
+const	path= require('path'),
+		webpack= require('webpack');
 
-var src= './src',
-	dest= './build';
+const	src= './src',
+		dest= './build';
 
 module.exports= {
 	dest: dest,
-	ejs: {
-		watch: src+'/ejs/**/*.ejs',
-		src: [src+'/ejs/**/*.ejs', '!'+src+'/ejs/**/_*.ejs'],
-		options: {
-		},
-		settings: {
-			ext: ".html"
-		},
-		dest: dest
-	},
 	webpack: {
 		src: src+'/js/**',
 		entry: [
-			src+'/js/script.js'
+			src+'/js/index.js'
 		],
 		webpack: {
 			module: {
@@ -27,9 +17,9 @@ module.exports= {
 					{
 						test: /\.js?$/,
 						exclude: /(node_modules)/,
-						loader: 'babel',
+						loader: 'babel-loader',
 						query: {
-							presets: ['es2015']
+							presets: ['@babel/preset-env']
 						}
 					}
 				]
@@ -40,6 +30,12 @@ module.exports= {
 			]
 		},
 		dest: dest+'/js'
+	},
+	ejs: {
+		path: src,
+		watch: src+'/ejs/**/*.(html|ejs|json)',
+		src: [src+'/ejs/**/*.html', '!'+src+'/ejs/**/_*.ejs'],
+		dest: dest
 	},
 	copy: {
 		src: src+'/www/**',

@@ -1,32 +1,25 @@
-var path= require('path'),
-	gulp= require('gulp'),
-	watch= require('gulp-watch')
-	browserSync= require('browser-sync'),
-	runSequence= require('run-sequence'),
-	config= require('../config');
+const	path= require('path'),
+		gulp= require('gulp'),
+		watch= require('gulp-watch')
+		runSequence= require('run-sequence'),
+		config= require('../config');
 
-gulp.task('watch', function(){
+gulp.task('watch', ()=>{
 
-	browserSync({
-		server: {
-			baseDir: config.dest
-		}
+	watch(path.relative('.', config.webpack.src), ()=>{
+		return runSequence('webpack');
 	});
 
-	watch(path.relative('.', config.ejs.watch), function(){
-		return runSequence('ejs', browserSync.reload);
-	});
-	
-	watch(path.relative('.', config.webpack.src), function(){
-		return runSequence('webpack', browserSync.reload);
+	watch(path.relative('.', config.ejs.watch), ()=>{
+		return runSequence('ejs');
 	});
 
-	watch(path.relative('.', config.sass.src), function(){
-		return runSequence('sass', browserSync.reload);
+	watch(path.relative('.', config.sass.src), ()=>{
+		return runSequence('sass');
 	});
 
-	watch(path.relative('.', config.copy.src), function(){
-		return runSequence('copy', browserSync.reload);
+	watch(path.relative('.', config.copy.src), ()=>{
+		return runSequence('copy');
 	});
 
 });

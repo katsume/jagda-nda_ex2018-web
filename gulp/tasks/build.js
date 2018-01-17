@@ -1,6 +1,6 @@
-var gulp= require('gulp'),
-	runSequence= require('run-sequence');
+const	gulp= require('gulp'),
+		runSequence= require('run-sequence');
 
-gulp.task('build', function(callback){
-	return runSequence('clean', ['ejs', 'webpack', 'sass', 'copy'], callback);
+gulp.task('build', (callback)=>{
+	return runSequence('clean', ['webpack', 'ejs', 'sass', 'copy'], callback);
 });

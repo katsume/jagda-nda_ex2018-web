@@ -1,6 +1,4 @@
-class Index {
-    constructor(){
-    }
-}
+const   $= require('jquery');
 
-module.exports= Index;
+$(()=>{
+});
