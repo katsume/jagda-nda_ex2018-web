@@ -1,8 +1,8 @@
 const	path= require('path'),
-		gulp= require('gulp'),
-		watch= require('gulp-watch')
-		runSequence= require('run-sequence'),
-		config= require('../config');
+			gulp= require('gulp'),
+			watch= require('gulp-watch')
+			runSequence= require('run-sequence'),
+			config= require('../config');
 
 gulp.task('watch', ()=>{
 

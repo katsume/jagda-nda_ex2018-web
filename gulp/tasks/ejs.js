@@ -1,11 +1,11 @@
 const	path= require('path');
-		// fs= require('fs');
+			// fs= require('fs');
 
 const	gulp= require('gulp'),
-		plumber= require('gulp-plumber'),
-		// through= require('through2'),
-		ejs= require('gulp-ejs'),
-		config= require('../config').ejs;
+			plumber= require('gulp-plumber'),
+			// through= require('through2'),
+			ejs= require('gulp-ejs'),
+			config= require('../config').ejs;
 
 // const	appendData= ()=>{
 // 	return through.obj((file, enc, cb)=>{

@@ -1,8 +1,8 @@
 const	path= require('path'),
-		webpack= require('webpack');
+			webpack= require('webpack');
 
 const	src= './src',
-		dest= './build';
+			dest= './build';
 
 module.exports= {
 	dest: dest,

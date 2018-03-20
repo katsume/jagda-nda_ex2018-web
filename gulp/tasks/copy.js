@@ -1,5 +1,5 @@
 const	gulp= require('gulp'),
-		config= require('../config').copy;
+			config= require('../config').copy;
 
 gulp.task('copy', ()=>{
 	return gulp.src(config.src)

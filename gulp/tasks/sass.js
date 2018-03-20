@@ -1,6 +1,6 @@
 const	gulp= require('gulp'),
-		sass= require('gulp-ruby-sass'),
-		config= require('../config').sass;
+			sass= require('gulp-ruby-sass'),
+			config= require('../config').sass;
 
 gulp.task('sass', ()=>{
 	return sass(config.src, config.sass)
