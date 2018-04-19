@@ -1,4 +1,4 @@
-# PROJECT_NAME
+# JAGDA New Designer Awards Exhibition 2018 Web
 
 ## Requirements
 
