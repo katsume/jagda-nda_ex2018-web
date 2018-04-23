@@ -13,7 +13,7 @@ const	gulp= require('gulp'),
 			runSequence= require('run-sequence');
 
 const	src= path.resolve(__dirname, 'src'),
-			dest= path.resolve(__dirname, 'build');
+			dest= path.resolve(__dirname, 'docs');
 
 gulp.task('clean', (callback)=>{
 	del([path.join(dest, '**', '*.*')]).then(()=>{
