@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   border: 0;
@@ -42,7 +43,45 @@ table {
 }
 
 body {
-  background-color: #00bdb1;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: 'TBゴシック SL', 'TBGothic SL', sans-serif;
+}
+
+.magnifier {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+}
+
+.magnifier-lens {
+  width: 48vmax;
+  height: 48vmax;
+  min-width: 320px;
+  min-height: 320px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.magnifier-lens_inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.magnifier-content_wrapper {
+  transform: translate(-50%, -50%);
+}
+
+.magnifier-content {
+  width: 100%;
+  height: 100%;
+}
+
+.magnifier-content_inner {
+  position: relative;
 }
 
 .wrapper_full {
@@ -80,6 +119,11 @@ body {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.info {
+  background-color: #00bdb1;
+  overflow: hidden;
 }
 
 .content {

@@ -1,0 +1,13 @@
+{
+  "name": "jagda-nda_ex2018-web",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gyronorm": "^2.0.6"
+  }
+}

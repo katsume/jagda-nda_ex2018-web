@@ -33,13 +33,17 @@ gulp.task('webpack', ()=>{
 				rules: [
 					{
 						test: /\.js?$/,
-						exclude: /(node_modules)/,
+						exclude: /(node_modules|bower_components)/,
 						loader: 'babel-loader',
 						query: {
 							presets: ['@babel/preset-env']
 						}
 					}
 				]
+			},
+			resolve: {
+				modules: ['bower_components'],
+				descriptionFiles: ['bower.json']
 			},
 			plugins: [
 			]
