@@ -29,10 +29,14 @@ module.exports= class {
 		contentInnerEl.appendChild(clonedContent);
 
 		const gn= new GyroNorm();
-		gn.init().then(()=>{
+		gn.init({
+			screenAdjusted: true
+		}).then(()=>{
 			gn.start(this._gnHandler.bind(this));
+			this._scale= scale.touch;
 		}).catch((e)=>{
 			document.addEventListener('mousemove', this._mousemoveHandler.bind(this));
+			this._scale= scale.mouse;
 		});
 
 		window.addEventListener('scroll', this._scrollHandler.bind(this));
@@ -44,7 +48,6 @@ module.exports= class {
 		this._contentInnerEl= contentInnerEl;
 		this._rx= 0;
 		this._ry= 0;
-		this._scale= scale;
 
 		this._resizeHandler();
 	}

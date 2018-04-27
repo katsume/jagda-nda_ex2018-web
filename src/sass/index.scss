@@ -6,8 +6,7 @@ $base_width: 320px;
 $base_height: 320px;
 $title_wh_ratio: 0.9;
 $title_min_height: 480px;
-$title_text_wrapper_min_height: 400px;
-$title_text_wh_ratio: 1.5;
+$title_text_wh_ratio: $title_min_height / $base_width;
 
 * {
 	box-sizing: border-box;
