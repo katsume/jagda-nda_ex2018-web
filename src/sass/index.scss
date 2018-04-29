@@ -1,6 +1,6 @@
-@import 'reset';
-@import 'variables';
-@import 'mixins';
+@import 'common/reset';
+@import 'common/variables';
+@import 'common/mixins';
 
 $base_width: 320px;
 $base_height: 320px;
@@ -21,45 +21,7 @@ body {
 	font-family: 'TBゴシック SL', 'TBGothic SL', sans-serif;
 }
 
-.magnifier {
-	position: fixed;
-	left: 50%;
-	top: 50%;
-}
-
-.magnifier-lens {
-
-	width: 48vmax;
-	height: 48vmax;
-	min-width: $base_width;
-	min-height: $base_height;
-
-	transform: translate(-50%, -50%);
-	border-radius: 50%;
-	overflow: hidden;
-
-	// https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
-	-webkit-mask-image: -webkit-radial-gradient(white, black);
-}
-
-.magnifier-lens_inner {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-}
-
-.magnifier-content_wrapper {
-	transform: translate(-50%, -50%);
-}
-
-.magnifier-content {
-	width: 100%;
-	height: 100%;
-}
-
-.magnifier-content_inner {
-	position: relative;
-}
+@import 'magnifier';
 
 .wrapper_full {
 	min-width: $base_width;
