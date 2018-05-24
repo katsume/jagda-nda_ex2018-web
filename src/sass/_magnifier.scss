@@ -4,21 +4,25 @@
 	top: 50%;
 
 	pointer-events: none;
+	
+	backface-visibility:hidden;
+	-webkit-backface-visibility: hidden;
 }
 
 .magnifier-lens {
 
-	width: 48vmax;
-	height: 48vmax;
+	width: 58vmax;
+	height: 58vmax;
 	min-width: $base_width;
 	min-height: $base_height;
 
 	transform: translate(-50%, -50%);
 	border-radius: 50%;
 	overflow: hidden;
+	background: #fff;
 
 	// https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
-	-webkit-mask-image: -webkit-radial-gradient(white, black);
+	// -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .magnifier-lens_inner {

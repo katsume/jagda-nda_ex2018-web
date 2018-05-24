@@ -8,6 +8,9 @@ $title_wh_ratio: 0.9;
 $title_min_height: 480px;
 $title_text_wh_ratio: $title_min_height / $base_width;
 
+$color_green: #00bdb1;
+$color_pink: #ff3fb4;
+
 * {
 	box-sizing: border-box;
 }
@@ -18,8 +21,20 @@ body {
 	overflow-x: hidden;
 	// overflow-y: hidden;
 
-	font-family: 'TBゴシック SL', 'TBGothic SL', sans-serif;
+	font-family: 'TBゴシック SL', 'TBGothic SL', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", メイリオ, Meiryo, sans-serif;
+	
+	background: #fafafa;
 }
+
+a {
+	color: $color_green;
+}
+
+::selection {
+	color: $color_green;
+	background-color: $color_pink;
+}
+
 
 @import 'magnifier';
 
@@ -32,7 +47,8 @@ body {
 .wrapper {
 	max-width: $base_width;
 	margin: 0 auto;
-	padding: 0 40px;
+	// padding: 0 40px;
+	padding: 0 30px;
 }
 
 .title {
@@ -66,16 +82,42 @@ body {
 	}
 }
 
-.info {
-	background-color: #00bdb1;
-	overflow: hidden;
+.title-content {
+	@include box-text-center(43px);
+	
+	font-size: 10px;
+	letter-spacing: 0.03em;
+	
+	margin-bottom: 40px;
+}
+
+// .info {
+// 	background-color: #00bdb1;
+// 	overflow: hidden;
+// }
+
+.main {
+	background: #fafafa;
+	background: $color_green;
+}
+
+.magnifier .main {
+	background: #fff;
 }
 
 .content {
 	margin: 20px 0;
+	margin: 40px 0 90px;
 
 	font-size: 8px;
 	line-height: 2;
+	
+	.inner {
+		margin: 0 10px;
+	}
+
+	backface-visibility:hidden;
+	-webkit-backface-visibility: hidden;
 }
 
 hr {
@@ -83,15 +125,371 @@ hr {
 	margin: 0;
 	padding: 0;
 
-	height: 9px;
+	width: 200px;
+	height: 8px;
 	border: none;
 
-	background-color: #ff33cc;
+	// background-color: #ff33cc;
+	background: $color_pink;
+}
+
+nav {
+	margin-top: 6px;
+	margin-left: 18%;
+	
+	a {
+		font-size: 8px;
+		text-decoration: none;
+		line-height: 2.3em;
+		letter-spacing: 0.06em;
+	}
 }
 
 footer {
 	margin: 0 -5px;
+	padding-bottom: 30px;
+	
+	li {
+		display: inline;
+		
+		a {
+			text-decoration: none;
+		}
+	}
+	
 	img {
 		margin: 0 5px;
+	}
+
+	.copy {
+		font-size: 90%;
+		margin-top: 60px;
+	}
+}
+
+section {
+	width: 100%;
+	padding-top: 10px;
+	margin-top: -10px;
+}
+
+.text {
+	letter-spacing: 0.06em;
+	line-height: 2.6em;
+}
+
+.map {
+	text-align: center;
+	padding: 50px 0 53px;
+	
+	.map_embed {
+		width: 160px;
+		height: 160px;
+		margin: 0 auto;
+	}
+
+	.map_caption {
+		margin-top: 6px;
+	}
+}
+
+.slide {
+	opacity: 0;
+	transition: opacity 0.2s;
+	
+	&.slick-initialized {
+		opacity: 1;
+	}
+	
+	& > div {
+		img {
+			display: inline-block;
+		}
+	}
+}
+
+table.tb_event {
+	margin-left: 10px;
+
+	tr th:nth-child(2) {
+		width: 190px;
+		height: 20px;
+
+		background: $color_green;
+		border-bottom: 1px solid $color_green;
+
+		text-indent: -9999px;
+	}
+
+	tr td:first-child {
+		font-size: 17px;
+		padding-right: 30px;
+		
+		span {
+			position: relative;
+			width: 20px;
+			display: inline-block;
+			text-align: center;
+			line-height: 1em;
+		}
+		
+		span::after {
+			content: "";
+			
+			position: absolute;
+			top: 0.35em;
+			
+			width: 20px;
+			height: 0.3em;
+			
+			background: $color_pink;
+			display: block;
+		}
+	}
+
+	tr td:nth-child(2) {
+		width: 190px;
+		padding: 0 30px 45px;
+		
+		background: $color_green;
+		border-bottom: 1px solid $color_green;
+		
+		.event_title {
+			font-size: 130%;
+			letter-spacing: 0.11em;
+			padding-bottom: 3px;
+		}
+
+		.event_date {
+			padding-bottom: 10px;
+			letter-spacing: 0.06em;
+		}
+
+		.event_note {
+			font-size: 85%;
+			letter-spacing: 0.02em;
+			line-height: 2em;
+		}
+
+		a {
+			color: #000;
+		}
+	}
+
+	tr:last-child td:nth-child(2) {
+		padding-bottom: 38px;
+	}
+}
+
+.hero {
+	margin-bottom: 50px;
+}
+
+.cv {
+	margin-bottom: 70px;
+	
+	.cv_img {
+		float: left;
+		width: 50%;
+		padding: 0 35px;
+		
+		img {
+			width: 65px;
+			height: 65px;
+		}
+	}
+
+	.cv_text {
+		min-height: 90px;
+		margin-left: 55%;
+		
+		.name_en {
+			font-size: 90%;
+			line-height: 1em;
+			letter-spacing: 0.06em;
+			padding-bottom: 9px;
+		}
+
+		.name_jp {
+			font-size: 145%;
+			line-height: 1em;
+			letter-spacing: 0.1em;
+			padding-bottom: 10px;
+		}
+
+		.exp {
+			font-size: 90%;
+			letter-spacing: 0.04em;
+		}
+	}
+
+	.cv_works {
+		margin-top: 30px;
+		text-align: center;
+	}
+}
+
+.goods {
+
+	&:not(:last-child) {
+		margin-bottom: 80px;
+	}
+
+	.goods_text {
+		font-size: 9px;
+		letter-spacing: 0.1em;
+		
+		margin: 0 10px 40px;
+	}
+
+	figure {
+		margin: 0 auto 14px;
+		
+		img {
+			width: 100%;
+		}
+
+		figcaption {
+			font-size: 60%;
+			letter-spacing: 0.04em;
+		}
+	}
+
+	& > img {
+		display: block;
+		margin: 0 auto 10px;		
+	}
+}
+
+.greeting {
+	border: 0.7px solid;
+	padding: 2.6em 20px;
+	
+	p {
+		font-size: 93%;
+		line-height: 2.4em;
+		letter-spacing: 0.03em;
+	}
+	
+	p:not(:last-child) {
+		margin-bottom: 3em;
+	}
+}
+
+.sponsor {
+	margin: 80px 0 40px;
+}
+
+#info {
+	.content {
+		margin: 20px 10px 0;
+	}
+
+	p {
+		letter-spacing: 0.08em;
+	}
+}
+
+.gotop {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	
+	width: 60px;
+	height: 45px;
+
+	a {
+		@include a-block;
+		background: url(/images/btn-gotop.svg) no-repeat center;	
+	}
+}
+
+.lang {
+	position: absolute;
+	top: 10px;
+	right: 5%;
+	text-align: center;
+	
+	a {
+		font-size: 11px;
+		color: #fff;
+		text-decoration: none;
+		line-height: 2.2em;
+		letter-spacing: 0.06em;
+	}
+
+	.lang_btn {
+		border-bottom: 1px solid #fff;
+		padding: 2px 5px 1px;
+	}
+
+	.lang_select {
+		margin-top: 0.5em;
+		display: none;
+		
+		a {
+			background: #fff;
+			color: #000;
+		}
+	}
+
+	&.is-open {
+		.lang_select {
+			display: block;
+		}
+	}
+}
+
+
+.w-100 { width: 100px; }
+.w-105 { width: 105px; }
+.w-110 { width: 110px; }
+.w-115 { width: 115px; }
+.w-120 { width: 120px; }
+.w-125 { width: 125px; }
+.w-130 { width: 130px; }
+.w-135 { width: 135px; }
+.w-140 { width: 140px; }
+.w-145 { width: 145px; }
+.w-150 { width: 150px; }
+.w-155 { width: 155px; }
+.w-160 { width: 160px; }
+.w-165 { width: 165px; }
+.w-170 { width: 170px; }
+.w-175 { width: 175px; }
+.w-180 { width: 180px; }
+.w-185 { width: 185px; }
+.w-190 { width: 190px; }
+.w-195 { width: 195px; }
+.w-200 { width: 200px; }
+.w-205 { width: 205px; }
+.w-210 { width: 210px; }
+.w-215 { width: 215px; }
+.w-220 { width: 220px; }
+.w-225 { width: 225px; }
+
+
+@include mediaMin {
+	#greeting, #profile {
+		.wrapper {
+			width: 80%;
+			max-width: 1000px;
+		}
+	}
+
+	.greeting {
+		padding: 2.6em 5%;
+	}
+
+	.cv {
+		.cv_img {
+			text-align: right;
+		}
+	}
+}
+
+.android {
+	.greeting {
+		border: 1px solid;
 	}
 }

@@ -101,7 +101,31 @@ eval("var __WEBPACK_AMD_DEFINE_RESULT__;/**\n* JavaScript project for accessing 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar Magnifier = __webpack_require__(/*! ./views/magnifier */ \"./src/js/views/magnifier.js\");\n\nvar App = function App() {\n  _classCallCheck(this, App);\n\n  var magnifier = new Magnifier(document.querySelector('.magnifier'), document.querySelector('.main'), {\n    mouse: 2.25,\n    touch: 2.0\n  });\n};\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  new App();\n});\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar Magnifier = __webpack_require__(/*! ./views/magnifier */ \"./src/js/views/magnifier.js\");\n\nvar GoogleMap = __webpack_require__(/*! ./views/map */ \"./src/js/views/map.js\");\n\nvar Common = __webpack_require__(/*! ./views/common */ \"./src/js/views/common.js\");\n\nvar BackgroundShift = __webpack_require__(/*! ./views/BackgroundShift */ \"./src/js/views/BackgroundShift.js\");\n\nvar App = function App() {\n  _classCallCheck(this, App);\n\n  var magnifier = new Magnifier(document.querySelector('.magnifier'), document.querySelector('.main'), {\n    mouse: 2.55,\n    touch: 2.0\n  });\n  var map = new GoogleMap(document.querySelectorAll('.map_embed'), {\n    lat: 35.6684134,\n    lng: 139.7570228,\n    zoom: 14\n  }); // const shift = new BackgroundShift(\n  // \t{\n  // \t\tx: 5,\n  // \t\ty: 5\n  // \t}\n  // );\n};\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  new App();\n  Common();\n});\n\n//# sourceURL=webpack:///./src/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/BackgroundShift.js":
+/*!*****************************************!*\
+  !*** ./src/js/views/BackgroundShift.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nmodule.exports =\n/*#__PURE__*/\nfunction () {\n  function _class(translate) {\n    _classCallCheck(this, _class);\n\n    window.addEventListener('resize', this._resizeHandler.bind(this));\n    document.addEventListener('mousemove', this._mousemoveHandler.bind(this));\n    this._els = document.querySelectorAll('.content');\n    this._rx = 0;\n    this._ry = 0;\n    this._translate = translate;\n\n    this._resizeHandler();\n  }\n\n  _createClass(_class, [{\n    key: \"_mousemoveHandler\",\n    value: function _mousemoveHandler(e) {\n      var rx = e.clientX / this._width - 0.5;\n      var ry = e.clientY / this._height - 0.5;\n\n      this._setPos(rx, ry);\n    }\n  }, {\n    key: \"_setPos\",\n    value: function _setPos(rx, ry) {\n      var tx = -1 * rx * this._translate.x;\n      var ty = -1 * ry * this._translate.y;\n\n      for (var i = 0; i < this._els.length; i++) {\n        var el = this._els[i];\n        el.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';\n      }\n    }\n  }, {\n    key: \"_resizeHandler\",\n    value: function _resizeHandler() {\n      this._width = window.innerWidth;\n      this._height = window.innerHeight;\n    }\n  }]);\n\n  return _class;\n}();\n\n//# sourceURL=webpack:///./src/js/views/BackgroundShift.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/common.js":
+/*!********************************!*\
+  !*** ./src/js/views/common.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nmodule.exports = function () {\n  $(function () {\n    //////////////////////\n    // BTN - go to top\n    //////////////////////\n    var $pageWrapTag = Modernizr.testProp('webkitAppearance') ? $(\"body, html\") : $(\"html\");\n    var $goto = $(\".gotop\");\n    $goto.on('click', function (e) {\n      $pageWrapTag.animate({\n        scrollTop: 0\n      }, 800);\n      e.preventDefault();\n    }); //////////////////////\n    // BTN - language toggle\n    //////////////////////\n\n    var $lang = $(\".lang\");\n    var $langBtn = $(\".lang_btn\");\n    $langBtn.on('click', function (e) {\n      $lang.toggleClass(\"is-open\");\n      e.preventDefault();\n    }); //////////////////////\n    // SLIDE - each cv's works\n    //////////////////////\n\n    $('.slide').slick({\n      slidesToShow: 1,\n      slidesToScroll: 1,\n      autoplay: true,\n      accessibility: false,\n      autoplaySpeed: 1500,\n      arrows: false,\n      fade: true,\n      speed: 100,\n      swipe: true,\n      pauseOnHover: false\n    }); //////////////////////\n    // UserAgent\n    //////////////////////\n\n    var e = navigator.userAgent;\n\n    if (e.indexOf(\"Android\") != -1) {\n      $(\"html\").addClass(\"android\");\n    }\n  });\n};\n\n//# sourceURL=webpack:///./src/js/views/common.js?");
 
 /***/ }),
 
@@ -117,6 +141,18 @@ eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance insta
 
 /***/ }),
 
+/***/ "./src/js/views/map.js":
+/*!*****************************!*\
+  !*** ./src/js/views/map.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nmodule.exports =\n/*#__PURE__*/\nfunction () {\n  function _class(els, val) {\n    _classCallCheck(this, _class);\n\n    var style = [{\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#f5f5f5\"\n      }]\n    }, {\n      \"elementType\": \"labels\",\n      \"stylers\": [{\n        \"visibility\": \"off\"\n      }]\n    }, {\n      \"elementType\": \"labels.icon\",\n      \"stylers\": [{\n        \"visibility\": \"off\"\n      }]\n    }, {\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#616161\"\n      }]\n    }, {\n      \"elementType\": \"labels.text.stroke\",\n      \"stylers\": [{\n        \"color\": \"#f5f5f5\"\n      }]\n    }, {\n      \"featureType\": \"administrative.land_parcel\",\n      \"stylers\": [{\n        \"visibility\": \"off\"\n      }]\n    }, {\n      \"featureType\": \"administrative.land_parcel\",\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#bdbdbd\"\n      }]\n    }, {\n      \"featureType\": \"administrative.neighborhood\",\n      \"stylers\": [{\n        \"visibility\": \"off\"\n      }]\n    }, {\n      \"featureType\": \"poi\",\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#eeeeee\"\n      }]\n    }, {\n      \"featureType\": \"poi\",\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#757575\"\n      }]\n    }, {\n      \"featureType\": \"poi.park\",\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#e5e5e5\"\n      }]\n    }, {\n      \"featureType\": \"poi.park\",\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#9e9e9e\"\n      }]\n    }, {\n      \"featureType\": \"road\",\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#ffffff\"\n      }]\n    }, {\n      \"featureType\": \"road.arterial\",\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#757575\"\n      }]\n    }, {\n      \"featureType\": \"road.highway\",\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#dadada\"\n      }]\n    }, {\n      \"featureType\": \"road.highway\",\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#616161\"\n      }]\n    }, {\n      \"featureType\": \"road.local\",\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#9e9e9e\"\n      }]\n    }, {\n      \"featureType\": \"transit.line\",\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#e5e5e5\"\n      }]\n    }, {\n      \"featureType\": \"transit.station\",\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#eeeeee\"\n      }]\n    }, {\n      \"featureType\": \"water\",\n      \"elementType\": \"geometry\",\n      \"stylers\": [{\n        \"color\": \"#c9c9c9\"\n      }]\n    }, {\n      \"featureType\": \"water\",\n      \"elementType\": \"labels.text.fill\",\n      \"stylers\": [{\n        \"color\": \"#9e9e9e\"\n      }]\n    }];\n    var latlng = new google.maps.LatLng(val.lat, val.lng);\n    var icon = \"//\" + window.location.host + \"/images/map-icon.svg\";\n\n    for (var i = 0; i < els.length; i++) {\n      var el = els[i];\n      var map = new google.maps.Map(el, {\n        center: latlng,\n        zoom: val.zoom,\n        mapTypeControl: false,\n        streetViewControl: false,\n        styles: style\n      });\n      var marker = new google.maps.Marker({\n        map: map,\n        position: latlng,\n        icon: icon\n      });\n    }\n  }\n\n  return _class;\n}();\n\n//# sourceURL=webpack:///./src/js/views/map.js?");
+
+/***/ }),
+
 /***/ 0:
 /*!*******************************!*\
   !*** multi ./src/js/index.js ***!
@@ -124,7 +160,7 @@ eval("\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance insta
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /Users/katsume/Projects/jagda-nda_ex2018-web/src/js/index.js */\"./src/js/index.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/index.js?");
+eval("module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/jagda2018/src/js/index.js */\"./src/js/index.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/index.js?");
 
 /***/ })
 
